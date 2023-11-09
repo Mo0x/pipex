@@ -6,11 +6,11 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:09:31 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/09 15:42:50 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:32:06 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "./libft.h"
 
 int	ft_char(char c)
 {

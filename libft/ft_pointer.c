@@ -1,59 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 19:19:41 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/09 15:45:26 by mgovinda         ###   ########.fr       */
+/*   Created: 2023/11/07 19:17:55 by mgovinda          #+#    #+#             */
+/*   Updated: 2023/11/09 19:30:15 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "./libft.h"
 
-static	int	ft_sizehex(unsigned long nb)
+static	int	ft_sizeaddr(unsigned long addr)
 {
 	int	ret;
 
 	ret = 0;
-	while (nb)
+	while (addr)
 	{
-		nb /= 16;
+		addr /= 16;
 		ret++;
 	}
 	return (ret);
 }
 
-static void	ft_puthex(unsigned long nb, char *base)
+static void	ft_putaddr(unsigned long addr)
 {
-	if (nb > 15)
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (addr > 15)
 	{
-		ft_puthex(nb / 16, base);
-		ft_puthex(nb % 16, base);
+		ft_putaddr(addr / 16);
+		ft_putaddr(addr % 16);
 	}
 	else
-		ft_putchar_fd(base[nb], 1);
+		ft_putchar_fd(base[addr], 1);
 }
 
-int	ft_hexa(unsigned int nb, char format)
+int	ft_pointer(unsigned long addr)
 {
 	int		ret;
-	char	*base1;
-	char	*base2;
 
-	base1 = "0123456789abcdef";
-	base2 = "0123456789ABCDEF";
-	ret = 0;
-	if (nb == 0)
+	ret = 2;
+	ft_putstr_fd("0x", 1);
+	if (addr == 0)
 	{
 		ft_putchar_fd('0', 1);
-		return (1);
+		ret++;
 	}
-	if (format == 'x')
-		ft_puthex(nb, base1);
-	if (format == 'X')
-		ft_puthex(nb, base2);
-	ret = ft_sizehex(nb);
+	else
+	{
+		ft_putaddr(addr);
+		ret += ft_sizeaddr(addr);
+	}
 	return (ret);
 }

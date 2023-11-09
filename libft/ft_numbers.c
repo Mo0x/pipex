@@ -6,11 +6,11 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 19:17:15 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/08 19:44:50 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/09 19:29:48 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "./libft.h"
 
 int	ft_number(int nb)
 {
