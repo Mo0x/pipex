@@ -16,7 +16,8 @@ $(NAME) : $(OBJS)
 	$(CC) $(CFLAGS) -c -o $@ $^
 
 clean :
-	make clean -C libft/
+	make clean -C ./libft/
+	make clean -C ./ft_printf/
 	rm -rf $(OBJS)
 
 fclean : clean

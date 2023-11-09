@@ -17,7 +17,6 @@ $(NAME) : $(OBJS)
 	ar -rcs $(NAME) $(OBJS)
 
 clean :
-	make clean -C libft/
 	rm -rf $(OBJS)
 
 fclean : clean
