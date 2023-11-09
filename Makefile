@@ -1,22 +1,23 @@
 NAME = pipex
 CC = gcc 
 SRCS = ./main.c ./srcs/pipex.c
-OBJS = $(patsubst %.c, %.o, $(srcs))
+OBJS = $(patsubst %.c, %.o, $(SRCS))
 INCDIRS = ./includes
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIRS)
 
 all : $(NAME)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c -o $@ $^
 
 $(NAME) : $(OBJS)
 	make -C ./ft_printf
 	mv ft_printf/libftprintf.a .
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. -lftprintf
 
+%.o : %.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
 clean :
-	rn -rf $(OBJS)
+	make clean -C libft/
+	rm -rf $(OBJS)
 
 fclean : clean
 	rm -rf $(NAME)
