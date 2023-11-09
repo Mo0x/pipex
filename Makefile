@@ -1,6 +1,6 @@
 NAME = pipex
 CC = gcc 
-SRCS = ./srcs/pipex.c
+SRCS = ./main.c ./srcs/pipex.c
 OBJS = $(patsubst %.c, %.o, $(srcs))
 INCDIRS = ./includes
 CFLAGS = -Wall -Wextra -Werror
@@ -13,7 +13,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	make -C ./ft_printf
 	mv ft_printf/libftprintf.a .
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. -lfprintf
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L. -lftprintf
 
 clean :
 	rn -rf $(OBJS)
