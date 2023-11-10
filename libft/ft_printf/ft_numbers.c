@@ -1,59 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pointer.c                                       :+:      :+:    :+:   */
+/*   ft_numbers.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 19:17:55 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/09 19:30:15 by mgovinda         ###   ########.fr       */
+/*   Created: 2023/11/07 19:17:15 by mgovinda          #+#    #+#             */
+/*   Updated: 2023/11/10 17:45:05 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-static	int	ft_sizeaddr(unsigned long addr)
+int	ft_number(int fd, int nb)
 {
 	int	ret;
 
 	ret = 0;
-	while (addr)
+	if (nb == 0)
 	{
-		addr /= 16;
+		ft_putchar_fd('0', fd);
+		return (1);
+	}
+	if (nb < 0)
+		ret++;
+	ft_putnbr_fd(nb, fd);
+	while (nb)
+	{
+		nb /= 10;
 		ret++;
 	}
 	return (ret);
 }
 
-static void	ft_putaddr(unsigned long addr)
+unsigned int	ft_unsigned(int fd, unsigned int nb)
 {
-	char	*base;
+	unsigned int	ret;
+	unsigned int	copy;
 
-	base = "0123456789abcdef";
-	if (addr > 15)
+	if (nb == 0)
 	{
-		ft_putaddr(addr / 16);
-		ft_putaddr(addr % 16);
+		ft_putchar_fd('0', fd);
+		return (1);
+	}
+	copy = nb;
+	ret = 0;
+	if (nb > 9)
+	{
+		ft_unsigned(fd, nb / 10);
+		ft_unsigned(fd, nb % 10);
 	}
 	else
-		ft_putchar_fd(base[addr], 1);
-}
-
-int	ft_pointer(unsigned long addr)
-{
-	int		ret;
-
-	ret = 2;
-	ft_putstr_fd("0x", 1);
-	if (addr == 0)
+		ft_putchar_fd(nb + '0', fd);
+	while (copy)
 	{
-		ft_putchar_fd('0', 1);
+		copy /= 10;
 		ret++;
-	}
-	else
-	{
-		ft_putaddr(addr);
-		ret += ft_sizeaddr(addr);
 	}
 	return (ret);
 }

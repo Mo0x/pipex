@@ -1,6 +1,6 @@
 NAME = pipex
 CC = gcc 
-SRCS = ./main.c ./srcs/pipex.c
+SRCS = ./srcs/main.c ./srcs/pipex.c ./srcs/error/ft_argc_error.c
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 INCDIRS = ./includes
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIRS)

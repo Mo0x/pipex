@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_argc_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgovinda <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 18:03:11 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/10/25 18:05:43 by mgovinda         ###   ########.fr       */
+/*   Created: 2023/11/10 17:10:09 by mgovinda          #+#    #+#             */
+/*   Updated: 2023/11/10 17:45:42 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pipex.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_argc_error(char *name)
 {
-	while (*s)
-		write(fd, s++, 1);
-	write(fd, "\n", 1);
+	ft_printf(2, "%s: %s requieres arguments to work.\n", name, name);
 }

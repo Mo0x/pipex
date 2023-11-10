@@ -1,10 +1,9 @@
 NAME = 	libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-CFILES = ft_isalpha.c ft_memcpy.c ft_isprint.c ft_isascii.c ft_isalnum.c ft_isdigit.c ft_strlen.c ft_memset.c ft_bzero.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_strdup.c ft_calloc.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_hexa.c ft_numbers.c ft_pointer.c ft_printf.c ft_printpc.c ft_string.c
-CBONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
+INCDIRS = ./includes
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIRS)
+CFILES = ./convert/ft_atoi.c ./convert/ft_itoa.c ./list/ft_lstnew.c ./list/ft_lstadd_front.c ./list/ft_lstsize.c ./list/ft_lstlast.c ./list/ft_lstadd_back.c ./list/ft_lstdelone.c ./list/ft_lstclear.c ./list/ft_lstiter.c ./list/ft_lstmap.c ./mem/ft_bzero.c ./mem/ft_calloc.c ./mem/ft_memchr.c ./mem/ft_memcmp.c ./mem/ft_memcpy.c ./mem/ft_memmove.c ./mem/ft_memset.c ./put/ft_putchar_fd.c ./put/ft_putendl_fd.c ./put/ft_putnbr_fd.c ./put/ft_putstr_fd.c ./string/ft_isalpha.c ./string/ft_isdigit.c ./string/ft_isalnum.c ./string/ft_isascii.c ./string/ft_isprint.c ./string/ft_split.c ./string/ft_strchr.c ./string/ft_strdup.c ./string/ft_striteri.c ./string/ft_strjoin.c ./string/ft_strlcat.c ./string/ft_strlcpy.c ./string/ft_strlen.c ./string/ft_strmapi.c ./string/ft_strmapi.c ./string/ft_strncmp.c ./string/ft_strnstr.c ./string/ft_strrchr.c ./string/ft_strtrim.c ./string/ft_substr.c ./string/ft_tolower.c ./string/ft_toupper.c ./ft_printf/ft_hexa.c ./ft_printf/ft_numbers.c ./ft_printf/ft_pointer.c ./ft_printf/ft_printf.c ./ft_printf/ft_printpc.c ./ft_printf/ft_string.c ./gnl/get_next_line.c 
 OBJS = $(patsubst %.c,%.o,$(CFILES))
-OBJSBNS = $(OBJS) $(patsubst %.c,%.o,$(CBONUS))
 
 all : $(NAME)
 
@@ -13,9 +12,6 @@ $(NAME) : $(OBJS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $^
-
-bonus : $(OBJSBNS) | $(NAME)
-	ar -rcs $(NAME) $^
 
 clean :
 	rm -rf $(OBJS) $(OBJSBNS)
