@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:43:40 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/10 18:51:59 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:36:03 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <sys/wait.h>
 # include "../libft/includes/libft.h"
 
-void	foo(void);
+void	pipex(int f1, int f2, char **argv, char **envp);
 void	ft_argc_error(char * name);
 
 #endif

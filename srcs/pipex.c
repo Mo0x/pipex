@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:42:24 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/16 16:08:47 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/16 16:37:09 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 int process_one(int f1, char *cmd)
 {
-	char	**split;
+	//haha	
+}
 
-	split = ft_split(cmd, ' ');
+void 	exec(int file, char *cmd, char **envp)
+{
+	//char	**	
 }
 
 void	pipex(int f1, int f2, char **argv, char **envp)
@@ -26,6 +29,7 @@ void	pipex(int f1, int f2, char **argv, char **envp)
 	pid_t	child_1;
 	pid_t	child_2;
 
+	(void)envp
 	pipe(super_pipe);
 	child_1 = fork();
 	if (child_1 < 0)
