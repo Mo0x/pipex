@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:43:40 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/16 16:36:03 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:48:07 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # include "../libft/includes/libft.h"
 
 void	pipex(int f1, int f2, char **argv, char **envp);
-void	ft_argc_error(char * name);
+int		ft_argc_error(char * name);
 
 #endif
