@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:43:40 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/29 16:48:29 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:27:15 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@
 
 void	pipex(int f1, int f2, char **argv, char **envp);
 void	ft_argc_error(char * name);
-char	*path_finder(char **envp);
+char	**path_finder(char **envp);
 
 #endif

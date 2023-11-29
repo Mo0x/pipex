@@ -6,24 +6,37 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:42:24 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/29 16:52:49 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:44:44 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char	*path_finder(char **envp)
+char	**path_finder(char **envp)
 {
 	char	**paths;
 	char	*tmp;
 	int		i;
 
 	i = 0;
+	tmp = NULL;
 	while (!ft_strnstr(envp[i], "PATH", 4))
 		i++;
-	tmp = envp[i];
-	ft_split(tmp, ":")
-	return (tmp);
+	if (envp[i])
+	{
+		envp[i] = envp[i] + 5;
+		paths = ft_split(envp[i], ':');
+		i = 0;
+		while (paths[i])
+		{
+			tmp = ft_strjoin(paths[i], "/");
+			free(paths[i]);
+			paths[i] = tmp;
+			free(tmp);
+			i++;
+		}
+	}
+	return (paths);
 }
 /*
 int process_one(int f1, char *cmd)

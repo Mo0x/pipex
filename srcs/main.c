@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:12:58 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/29 16:49:04 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:39:17 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	ft_printf(1, "%s", path_finder(envp));
+	char **paths = path_finder(envp);
+	int i = 0;
+	while (paths[i])
+	{
+		ft_printf(1, "%s\n", paths[i]);
+		i++;
+	}
 	(void)argc;
 	(void)argv;
 	/*int	f1;
