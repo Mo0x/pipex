@@ -12,6 +12,16 @@
 
 #include "../includes/pipex.h"
 
+void	ft_free_array(void **tab)
+{
+	int	i;
+
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
+	free(tab);
+}
+
 char	**path_finder(char **envp)
 {
 	char	**paths;
@@ -19,7 +29,7 @@ char	**path_finder(char **envp)
 	int		i;
 
 	i = 0;
-	tmp = NULL;
+	paths = NULL;
 	while (!ft_strnstr(envp[i], "PATH", 4))
 		i++;
 	if (envp[i])
@@ -30,15 +40,24 @@ char	**path_finder(char **envp)
 		while (paths[i])
 		{
 			tmp = ft_strjoin(paths[i], "/");
+			if (!tmp)
+			{
+				ft_free_array((void **)paths);
+				return (NULL);
+			}	
 			free(paths[i]);
 			paths[i] = tmp;
-			free(tmp);
 			i++;
 		}
 	}
 	return (paths);
 }
-/*
+
+char	*command_finder(char **paths, char *cmd)
+{
+
+}
+
 int process_one(int f1, char *cmd)
 {
 	//haha	
@@ -55,8 +74,9 @@ void	pipex(int f1, int f2, char **argv, char **envp)
 	int		status;
 	pid_t	child_1;
 	pid_t	child_2;
+	char	**paths;
 
-	(void)envp;
+	paths = path_finder(envp);
 	pipe(super_pipe);
 	child_1 = fork();
 	if (child_1 < 0)
@@ -72,4 +92,4 @@ void	pipex(int f1, int f2, char **argv, char **envp)
 	close(super_pipe[1]);
 	waitpid(child_1, &status, 0);
 	waitpid(child_2, &status, 0);
-}*/
+}

@@ -26,5 +26,6 @@
 void	pipex(int f1, int f2, char **argv, char **envp);
 void	ft_argc_error(char * name);
 char	**path_finder(char **envp);
+void	ft_exec(int file, char *cmd, char **paths);
 
 #endif

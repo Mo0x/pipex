@@ -14,16 +14,7 @@
 
 int	main(int argc, char **argv, char **envp)
 {
-	char **paths = path_finder(envp);
-	int i = 0;
-	while (paths[i])
-	{
-		ft_printf(1, "%s\n", paths[i]);
-		i++;
-	}
-	(void)argc;
-	(void)argv;
-	/*int	f1;
+	int	f1;
 	int	f2;
 
 	if (argc != 5)
@@ -46,6 +37,6 @@ int	main(int argc, char **argv, char **envp)
 		perror("Error opening file2 :");
 		return (-1);
 	}
-	pipex(f1, f2, argv, envp);*/
+	pipex(f1, f2, argv, envp);
 	return (0);
 }
