@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:43:40 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/29 17:27:15 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:22:11 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 void	pipex(int f1, int f2, char **argv, char **envp);
 void	ft_argc_error(char * name);
 char	**path_finder(char **envp);
-void	ft_exec(int file, char *cmd, char **paths);
+char	*command_finder(char **paths, char *cmd);
+void	ft_eq(char *msg);
+void	ft_free_array(void **tab);
+void	ft_error_path(char *cmd);
 
 #endif
