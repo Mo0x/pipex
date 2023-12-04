@@ -6,13 +6,13 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:42:24 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/30 17:43:57 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:03:01 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
-int	ft_piping(int f1, int *super_pipe, char *cmd, char **envp)
+int	ft_exec(char *cmd, char **envp)
 {
 	char	**paths;
 	char	**s_cmd;
@@ -23,9 +23,6 @@ int	ft_piping(int f1, int *super_pipe, char *cmd, char **envp)
 	ex = command_finder(paths, s_cmd[0]);
 	if (!ex)
 		ft_error_path(s_cmd[0]);
-	dup2(f1, 0);
-	dup2(super_pipe[1], 1);
-	close(super_pipe[0]);
 	execve(ex, &s_cmd[1], envp);
 	ft_free_array((void **)paths);
 	ft_free_array((void **)s_cmd);
@@ -33,33 +30,26 @@ int	ft_piping(int f1, int *super_pipe, char *cmd, char **envp)
 	return (0);
 }
 
-int	process_two(int f2, int *super_pipe, char *cmd, char **envp)
+int	ft_piping(char *cmd, char **envp)
 {
-	char	**paths;
-	char	**s_cmd;
-	char	*ex;
+	int		super_pipe[2];
+	pid_t	pid;
 
-	s_cmd = ft_split(cmd, ' ');
-	paths = path_finder(envp);
-	ex = command_finder(paths, s_cmd[0]);
-	if (!ex)
-		ft_error_path(s_cmd[0]);
-	dup2(f2, 1);
-	dup2(super_pipe[0], 0);
-	close(super_pipe[1]);
-	execve(ex, &s_cmd[1], envp);
-	ft_free_array((void **)paths);
-	ft_free_array((void **)s_cmd);
-	free(ex);
+	if (pipe(super_pipe) == -1)
+		ft_eq("Pipe creation error:");
+	pid = fork();
+	if (pid == -1)
+		ft_eq("Fork error:");
+	if (!pid)
+	{
+		close(super_pipe[0]);
+		dup2(super_pipe[1], 1);
+		ft_exec(cmd, envp);
+	}
+	else
+	{
+		close(super_pipe[1]);
+		dup2(super_pipe[0], 0);
+	}
 	return (0);
-}
-
-void	pipex(int f1, int f2, char **argv, char **envp, int ac)
-{
-	int	i;
-
-	i = 0;
-	dup2(f1, 0);
-	while (i < ac - 2)
-		ft_piping(av[i++], env)
 }

@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:12:58 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/11/30 16:11:27 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/12/04 19:49:50 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@ int	main(int argc, char **argv, char **envp)
 	if ((access(argv[1], F_OK | R_OK)) == 0)
 		f1 = open(argv[1], O_RDONLY);
 	else
-		ft_eq("");
+		ft_eq("Cannot access file1");
 	if (f1 < 0)
 		ft_eq("Error opening file1 :");
-	if ((access(argv[4], F_OK | W_OK | R_OK)) == 0)
-		f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	else
-		ft_eq("");
+	f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
 	if (f2 < 0)
 		ft_eq("Error opening file2 :");
 	pipex(f1, f2, argv, envp);
-	return (0);
+	return (EXIT_SUCCESS);
 }
