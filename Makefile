@@ -17,7 +17,7 @@ $(NAME) : $(OBJS)
 bonus : $(OBJS_BONUS)
 	make -C ./libft/
 	mv ./libft/libft.a .
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS_BONUS) -L. -lft
+	$(CC) $(CFLAGS) -o pipex_bonus $(OBJS_BONUS) -L. -lft
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c -o $@ $^

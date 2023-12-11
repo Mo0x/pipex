@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:12:58 by mgovinda          #+#    #+#             */
-/*   Updated: 2023/12/04 19:34:48 by mgovinda         ###   ########.fr       */
+/*   Updated: 2023/12/11 14:51:15 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_heredoc_sdin(char **argv, int *super_pipe)
 	while (1)
 	{
 		ret = get_next_line(0);
-		if (ft_strncmp(ret, argv[2], ft_strlen(argv[2])) == 0)
+		if (ft_strcmp(ret, argv[2]) == 0)
 		{
 			free(ret);
 			exit(0);
